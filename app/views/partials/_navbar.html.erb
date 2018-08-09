@@ -1,0 +1,42 @@
+<nav class="navbar navbar-light navbar-toggleable-sm fixed-top bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <span class="navbar-brand">
+    <a href="/">tubi.ru</a> <small>short links you can count on</small>
+  </span>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-4">
+        <%= link_to 'Create link', new_link_path, class: 'btn btn-outline-danger' %>
+      </li>
+
+      <% if !user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to fa_icon('sign-in', text: 'Log in'), new_user_session_path, class: 'btn btn-link' %>
+        </li>
+    <% else %>
+        <li class="nav-item dropdown">
+          <%= link_to current_user.email, current_user,
+                      class: 'dropdown-toggle btn btn-outline-primary ',
+                      id: 'navbarDropdownMenuLink',
+                      'data-toggle': 'dropdown',
+                      'aria-haspopup': 'true',
+                      'aria-expanded': 'false'
+          %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to 'My Links', links_path, class: 'dropdown-item' %>
+            <%= link_to 'My Profile', current_user, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to fa_icon('sign-out', text: 'Log out', right: true), destroy_user_session_path, method: 'delete', class: 'dropdown-item' %>
+          </div>
+
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

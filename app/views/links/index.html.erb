@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>Links</h3>
+    <%= render 'partials/links_table', links: @links %>
+    <br>
+    <%= link_to 'New Link', new_link_path, class: 'btn btn-primary' %>
+  </div>
+</div>

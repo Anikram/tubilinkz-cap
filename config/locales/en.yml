@@ -1,0 +1,18 @@
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    attributes:
+      link:
+        name: 'Short name'
+        url: 'Destination URL'
+
+    errors:
+      models:
+        link:
+          attributes:
+            name:
+              invalid: "have to be alphanumeric symbols and _"
+              stopwords: "can't be tubi.ru webapp url (users, links, etc.)"
+              not_generated: "couldn't be made unique, try again or type your own"

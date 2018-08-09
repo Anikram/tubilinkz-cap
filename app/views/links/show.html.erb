@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <small class="text-muted">Copy this URL</small>
+    <h1 class="display-4-resp"><%= truncate(short_url(@link), length: 37) %>
+      <%= link_to fa_icon('anchor'), short_url(@link), target: :blank, title: 'Open link' %>
+    </h1>
+    <hr class="mt-4 mb-4">
+  </div>
+
+  <div class="col-md-12">
+    <small class="text-muted">Destination</small>
+    <p class="hide-overflow lead">
+      <%= link_to truncate(@link.url, length: 100), @link.url, target: :blank, title: 'Open destination in new window' %>
+      <%= %>
+    </p>
+    <div class="row my-4">
+      <div class="col-md-12 card-deck">
+        <div class="col-md-4 col-sm-12 card ">
+          <p class="lead text-center my-auto py-3">
+            Clicks: <%= @link.clicks %>
+          </p>
+        </div>
+        <div class="col-md-4 col-sm-12 card ">
+          <p class="my-auto p-4">
+            Info updated: <strong>
+            <nobr><%= l(@link.updated_at, format: :short) %></nobr>
+          </strong>
+            <br>
+            Link created: <strong>
+            <nobr><%= l(@link.created_at, format: :short) %></nobr>
+          </strong>
+          </p>
+        </div>
+        <div class="col-md-4 col-sm-12 card">
+          <p class="my-auto p-4">
+            <nobr><%= link_to fa_icon('pencil-square-o', text: 'Edit'), edit_link_path(@link), title: 'Edit link'%></nobr>
+            <br>
+            <nobr><%= link_to fa_icon('trash-o', text: 'Destroy'), @link, method: :delete, data: {confirm: 'Are you sure?'} %></nobr>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
