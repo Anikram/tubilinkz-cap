@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20170505113740) do
     t.string "name", null: false
     t.string "domain"
     t.string "url", null: false
-    t.integer "health"
     t.integer "clicks", default: 0, null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
