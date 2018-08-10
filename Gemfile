@@ -15,6 +15,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -45,7 +46,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.2'
   
   gem 'letter_opener'
-  gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'web-console', '>= 3.3.0'
