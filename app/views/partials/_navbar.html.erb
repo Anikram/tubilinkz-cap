@@ -9,7 +9,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
+        <% if policy(Link).create? %>
         <%= link_to 'Create link', new_link_path, class: 'col-sm-2 btn btn-outline-danger nav-link' %>
+          <% end %>
       </li>
 
       <% if !user_signed_in? %>
@@ -35,6 +37,9 @@
             <%= link_to fa_icon('sign-out', text: 'Log out', right: true), destroy_user_session_path, method: 'delete', class: 'dropdown-item' %>
           </div>
 
+        </li>
+        <li class="nav-item">
+          <%= link_to fa_icon('sign-in', text: 'Log out'), destroy_user_session_path, :method => :delete, class: 'btn btn-link' %>
         </li>
       <% end %>
     </ul>

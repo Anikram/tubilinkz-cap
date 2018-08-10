@@ -7,7 +7,7 @@ end
 
 gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.7'
-
+gem 'pundit'
 gem 'devise', '~> 4.3.0'
 
 gem 'jquery-rails'

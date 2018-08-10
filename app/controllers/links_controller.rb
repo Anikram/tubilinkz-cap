@@ -3,10 +3,13 @@
 # (c) goodprogrammer.ru
 #
 class LinksController < ApplicationController
-  before_action :authenticate_user!, except: [:open, :new, :create]
+  before_action :authenticate_user!, except: [:open]
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :set_linkdomain, only: [:create, :open]
   before_action :set_shortlink, only: [:open]
+
+  after_action :verify_authorized, except: [:open, :index]
+  after_action :verify_policy_scoped, only: [:index]
 
   def open
     # increment clicks counter — in an atomic/thread-safe way
@@ -17,27 +20,34 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = policy_scope(Link)
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
+    authorize @link
   end
 
   # GET /links/new
   def new
     @link = Link.new
+
+    authorize @link
   end
 
   # GET /links/1/edit
   def edit
+    authorize @link
   end
 
   # POST /links
   # POST /links.json
   def create
     @link = Link.new(link_params)
+
+    authorize @link
+
     @link.user = current_user
     @link.domain = @domain
 
@@ -52,6 +62,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
+    authorize @link
     if @link.update(link_params)
       # TBD: move to i18n strings
       redirect_to @link, notice: 'Link was successfully updated.'
@@ -63,6 +74,7 @@ class LinksController < ApplicationController
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
+    authorize @link
     @link.destroy
     # TBD: move to i18n strings
     redirect_to links_url, notice: 'Link was successfully destroyed.'

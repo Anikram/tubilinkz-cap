@@ -10,7 +10,7 @@ class Link < ApplicationRecord
   # https://github.com/ruby/ruby/blob/trunk/lib/uri/rfc2396_parser.rb#L21-L56
   DOMAIN_REGEXP = /\A#{URI::RFC2396_REGEXP::PATTERN::HOSTNAME}\Z/
 
-  belongs_to :user, optional: true
+  belongs_to :user
 
   validates :name, uniqueness: {scope: [:domain]}
   validates :name, length: {maximum: 90}

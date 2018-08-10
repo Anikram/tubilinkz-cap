@@ -16,3 +16,5 @@ en:
               invalid: "have to be alphanumeric symbols and _"
               stopwords: "can't be tubi.ru webapp url (users, links, etc.)"
               not_generated: "couldn't be made unique, try again or type your own"
+  pundit:
+    not_authorized: 'You have no rights to do that.'
