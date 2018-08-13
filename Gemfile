@@ -9,7 +9,7 @@ gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.7'
 gem 'pundit'
 gem 'devise', '~> 4.3.0'
-
+gem 'resque', '<4'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-rails'
