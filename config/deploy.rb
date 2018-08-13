@@ -4,8 +4,6 @@ lock '3.8.1'
 set :application, 'mymeet'
 set :repo_url, 'git@github.com:Anikram/tubilinkz-cap.git'
 
-role :resque_worker, "mymeet.website"
-
 set :deploy_to, '/home/deploy/tubilinkz-cap'
 
 append :linked_files, 'config/database.yml', 'config/secrets.yml'

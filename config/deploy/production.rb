@@ -15,7 +15,7 @@
 # - web server (где живет nginx)
 # - database (где живет наш Postgres)
 # У нас все живет на одной машине.
-server 'mymeet.website', user: 'deploy', roles: %w{app db web resque_workers}
+server 'mymeet.website', user: 'deploy', roles: %w{app db web resque_worker}
 
 set :resque_environment_task, true
 
