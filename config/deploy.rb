@@ -4,12 +4,17 @@ lock '3.8.1'
 set :application, 'mymeet'
 set :repo_url, 'git@github.com:Anikram/tubilinkz-cap.git'
 
+role :resque_worker, "mymeet.website"
+role :resque_scheduler, "mymeet.website"
+
+set :workers, { "mymeet_queue" => 2 }
+
 set :deploy_to, '/home/deploy/tubilinkz-cap'
 
 append :linked_files, 'config/database.yml', 'config/secrets.yml'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads'
 
-
+after 'deploy:restart', 'resque:restart'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
