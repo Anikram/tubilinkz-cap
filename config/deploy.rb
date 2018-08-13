@@ -5,9 +5,6 @@ set :application, 'mymeet'
 set :repo_url, 'git@github.com:Anikram/tubilinkz-cap.git'
 
 role :resque_worker, "mymeet.website"
-role :resque_scheduler, "mymeet.website"
-
-set :workers, { "mymeet_queue" => 2 }
 
 set :deploy_to, '/home/deploy/tubilinkz-cap'
 
